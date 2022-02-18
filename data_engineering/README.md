@@ -20,7 +20,7 @@ Please use SQL for the following questions:
 
 Please use Python & Pandas for the following questions:
 
-    1. Load both csv files as data frames, and join the tables together on transaction_id, user_id, and date.
+    1. Load both csv files as data frames, and join the tables together on transaction_id and date.
     2. Find the number of space_suit’s purchased between October 31st and November 31st.
     3. Using Python, write logic to clean the height column in the telemetry data.
 
