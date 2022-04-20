@@ -1,0 +1,6 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/react_tech_interview/node_modules
+/react_tech_interview/.pnp
+/react_tech_interview/.pnp.js
