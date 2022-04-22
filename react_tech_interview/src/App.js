@@ -16,14 +16,69 @@ const Column = styled.div`
 
 const Card = styled.div`
   width: 200px;
-  outline: 5px solid black;
+  outline: 5px solid purple;
 `
 
 function App() {
 
+  const exampleTask = {
+    id: uuid(),
+    title: 'Name of Task',
+    description: 'Things I need to complete'
+  }
+
+  const newTask = (e) => {
+    e.preventDefault();
+    // Create a new task here
+  }
+
+  const showTask = (item) => {
+    return (
+    <Card key={item.id}>
+        <h3>{item.title}</h3>
+        <p>{item.description}</p>
+        <br></br>
+        <button>{'<'}</button>
+        <button> {'>'}</button>
+        <br></br>
+        <button>Delete</button>
+      </Card>
+    )
+  }
+
+  const deleteTask = () => {
+  }
+
   return (
-    <h1>Hello World</h1>
+    <Container>
+      <Column>
+      <h1>KANBAN BOARD</h1>
+        <form>
+        <label for="titlen">Title:</label>
+        <br></br>
+        <input type="text" id="title" name="title" />
+        <br></br>
+        <label for="description">Description:</label>
+        <br></br>
+        <input type="text" id="description" name="description" />
+        <br></br>
+        <input type="submit" value="Submit" onClick={(e) => newTask(e)}/>
+        </form>
+      </Column>
+      <Column>
+        <h2>Todo</h2>
+        {showTask(exampleTask)}
+      </Column>
+      <Column>
+        <h2>In Progress</h2>
+        <p>Put items here</p>
+      </Column>
+      <Column>
+      <h2>Done</h2>
+        <p>Put items here</p>
+      </Column>
+    </Container>
   );
 }
 
-export default App;
+export default App
