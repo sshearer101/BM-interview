@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import uuid from 'react-uuid';
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 `;
 
 const Column = styled.div`
@@ -29,6 +29,7 @@ function App() {
 
   const newTask = (e) => {
     e.preventDefault();
+    console.log('Create Task')
     // Create a new task here
   }
 
@@ -41,12 +42,14 @@ function App() {
         <button>{'<'}</button>
         <button> {'>'}</button>
         <br></br>
-        <button>Delete</button>
+        <button onClick={() => deleteTask()}>Delete</button>
       </Card>
     )
   }
 
   const deleteTask = () => {
+    console.log('Delete Task')
+    // Delete a task here
   }
 
   return (
