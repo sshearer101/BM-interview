@@ -9,8 +9,8 @@ One of our clients, Discount Astronaut Store, is selling an Astronaut Suit, and 
 
 Please complete the following and submit your work:
 
-1. Load the data file into memory.
-2. Create an empty object with a 'products' key, and assign an empty array as it's value.
+1. Create an empty object with a 'products' key, and assign an empty array as it's value.
+2. Load the data file into memory.
 3. For each variant in your loaded dataset, generate a flat object that includes the following:
 
 - variant id
@@ -18,12 +18,12 @@ Please complete the following and submit your work:
 - price
 - inventory count
 - description
-
-Push each of these objects to your new 'products' array.
+- color
 
 4. Estimate the potential sales for each variant by multiplying price by inventory. Add a key to each variant object called 'potential_sales'.
 5. Calculate the combined potential sales for all variants, and store the value at the top level of your object under the key 'potential_sales_total'.
 6. Split variants between variants that have inventory and variants that don't have inventory. Save the variants with inventory in an array under the key 'in_stock_products', and save the variants with no inventory in an array under the key 'out_of_stock_products'.
+7. Push each newly created variant object to your new 'products' array created in step 1.
 
 ---
 
