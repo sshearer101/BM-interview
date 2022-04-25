@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom'
+import { Route, Switch, Redirect, HashRouter } from 'react-router-dom'
 import styled from 'styled-components';
 import { Nav, Api } from '../components';
 import { measurementGuide } from '../config';
@@ -33,7 +33,7 @@ export const App = () => {
     })
   }
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Container>
       <Title>Measurement Guide</Title>
       <Canvas>
@@ -44,6 +44,6 @@ export const App = () => {
         </Switch>
       </Canvas>
       </Container>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
