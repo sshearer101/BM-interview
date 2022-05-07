@@ -1,6 +1,5 @@
-# Technical Interview
-
-Welcome to **Spacesuit & Co.**, the hottest Space Suit fashion brand outfitting astronauts since 2022! Our suits are highest-end, super air-tight variety, and are very expensive.
+Welcome to **Spacesuit & Co.**, the hottest Space Suit fashion brand outfitting astronauts since 2022! 
+Our suits are highest-end, super air-tight variety, and are very expensive 🚀 🧑‍🚀 💸
 
 We need to learn more about our astronaut customers, who are very picky when it comes to space suit fit. The better we understand their behaviour, the better we can do to fit them in the right space suit.
 
