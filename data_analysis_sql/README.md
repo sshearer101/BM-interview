@@ -22,6 +22,6 @@ Please load the data into a database (feel free to make use of the scripts locat
 
 ### Deliverables
 
-1. Spacesuit & Co. is a distributed team working in different timezones. Therefore, we ask you to structure your findings and code in a way that other analysts could pick it up intuitively and continue building up on top of it.
+1. **Spacesuit & Co.** is a distributed team working in different timezones. Therefore, we ask you to structure your findings and code in a way that other analysts could pick it up intuitively and continue building up on top of it.
 
-2. Please submit your findings and code through a pull request that the rest of the Spacesuit & Co. team could review.
+2. Please submit your findings and code through a pull request that the rest of the **Spacesuit & Co.** team could review.
