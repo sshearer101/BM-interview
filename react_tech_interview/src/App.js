@@ -21,6 +21,9 @@ const Card = styled.div`
 
 function App() {
 
+  const [details, setDetails] = useState({title: '', description: ''})
+  const [task, setTask] = useState([])
+  const [activeStep, setActiveStep] = useState(0)
 
   const exampleTask = {
     id: uuid(),
@@ -41,8 +44,8 @@ function App() {
         <h3>{item.title}</h3>
         <p>{item.description}</p>
         <br></br>
-        <button>{'<'}</button>
-        <button > {'>'}</button>
+        <button >{'<'}</button>
+        <button onClick={() => handleClick(item)}> {'>'}</button>
         <br></br>
         <button onClick={() => deleteTask()}>Delete</button>
       </Card>
@@ -54,20 +57,19 @@ function App() {
     // Delete a task here
   }
 
-  const [details, setDetails] = useState({title: '', description: ''})
-  const [task, setTask] = useState([])
-  const [clicked, setClicked] = useState('')
-
-  function handleChange(e){
-    console.log(e)
+  function handleClick(item){
+    if (item.swimLane === "toDo"){
+      item.swimLane = "inProgress"
+    }
+    else if(item.swimLane === "inProgress"){
+      item.swimLane = "done"
+    } 
+    else if (item.swimLane === "done"){
+      item.swimLane = "toDo"
+    }
+    console.log(item)
   }
-
-  // function handleSubmit(e){
-  //   e.preventDefault()
-  //   setTask(details)
-  // }
-
-  console.log(task)
+ 
   return (
     <Container>
       <Column>
@@ -92,20 +94,24 @@ function App() {
       </Column>
       <Column>
         <h2>Todo</h2>
+
         {task.map((x) => 
-          showTask(x)
+         x.swimLane === "toDo" ? showTask(x) : ''
         )}
       </Column>
       <Column>
         <h2>In Progress</h2>
         <p>Put items here</p>
         {task.map((x) => 
-          showTask(x)
-        )}
+         x.swimLane === "inProgress" ? showTask(x) : ''
+         )}
       </Column>
       <Column>
       <h2>Done</h2>
         <p>Put items here</p>
+        {task.map((x) => 
+         x.swimLane === "done" ? showTask(x) : ''
+         )}
       </Column>
     </Container>
   );
