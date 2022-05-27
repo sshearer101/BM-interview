@@ -21,6 +21,7 @@ const Card = styled.div`
 
 function App() {
 
+
   const exampleTask = {
     id: uuid(),
     title: 'Name of Task',
@@ -30,7 +31,8 @@ function App() {
   const newTask = (e) => {
     e.preventDefault();
     console.log('Create Task')
-    // Create a new task here
+    details.swimLane = "toDo"
+    setTask([...task, details])
   }
 
   const showTask = (item) => {
@@ -40,7 +42,7 @@ function App() {
         <p>{item.description}</p>
         <br></br>
         <button>{'<'}</button>
-        <button> {'>'}</button>
+        <button > {'>'}</button>
         <br></br>
         <button onClick={() => deleteTask()}>Delete</button>
       </Card>
@@ -52,29 +54,54 @@ function App() {
     // Delete a task here
   }
 
+  const [details, setDetails] = useState({title: '', description: ''})
+  const [task, setTask] = useState([])
+  const [clicked, setClicked] = useState('')
+
+  function handleChange(e){
+    console.log(e)
+  }
+
+  // function handleSubmit(e){
+  //   e.preventDefault()
+  //   setTask(details)
+  // }
+
+  console.log(task)
   return (
     <Container>
       <Column>
       <h1>KANBAN BOARD</h1>
-        <form>
+        <form >
         <label for="titlen">Title:</label>
         <br></br>
-        <input type="text" id="title" name="title" />
+        <input 
+          type="text" id="title" name="title" 
+          onChange={(e) => setDetails({...details, title: e.target.value})}
+        />
         <br></br>
         <label for="description">Description:</label>
         <br></br>
-        <input type="text" id="description" name="description" />
+        <input 
+          type="text" id="description" name="description" 
+          onChange={(e) => setDetails({...details, description: e.target.value})}
+        />
         <br></br>
         <input type="submit" value="Submit" onClick={(e) => newTask(e)}/>
         </form>
       </Column>
       <Column>
         <h2>Todo</h2>
-        {showTask(exampleTask)}
+        {task.map((x) => 
+          showTask(x)
+        )}
       </Column>
       <Column>
         <h2>In Progress</h2>
         <p>Put items here</p>
+        {task.map((x) => 
+          showTask(x)
+        )}
       </Column>
       <Column>
       <h2>Done</h2>
