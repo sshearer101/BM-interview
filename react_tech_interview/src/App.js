@@ -23,7 +23,7 @@ function App() {
 
   const [details, setDetails] = useState({title: '', description: ''})
   const [task, setTask] = useState([])
-  const [activeStep, setActiveStep] = useState(0)
+  const [saveItem, setSaveItem] = useState([])
 
   const exampleTask = {
     id: uuid(),
@@ -34,7 +34,7 @@ function App() {
   const newTask = (e) => {
     e.preventDefault();
     console.log('Create Task')
-    details.swimLane = "toDo"
+    details.swimLane = 0
     setTask([...task, details])
   }
 
@@ -44,32 +44,40 @@ function App() {
         <h3>{item.title}</h3>
         <p>{item.description}</p>
         <br></br>
-        <button >{'<'}</button>
-        <button onClick={() => handleClick(item)}> {'>'}</button>
+        <button onClick={() => handleLeftClick(item)}> {'<'}</button>
+
+        <button onClick={() => handleRightClick(item)}> {'>'}</button>
         <br></br>
-        <button onClick={() => deleteTask()}>Delete</button>
+        <button onClick={() => deleteTask(item)}>Delete</button>
       </Card>
     )
   }
 
-  const deleteTask = () => {
+  function deleteTask(item){
     console.log('Delete Task')
-    // Delete a task here
+    setTask(task.filter((x) => x !== item))
+   
   }
 
-  function handleClick(item){
-    if (item.swimLane === "toDo"){
-      item.swimLane = "inProgress"
+  function handleRightClick(item){
+    if(item.swimLane < 2){
+      item.swimLane = item.swimLane + 1
+    } else{
+      item.swimLane = 0
     }
-    else if(item.swimLane === "inProgress"){
-      item.swimLane = "done"
-    } 
-    else if (item.swimLane === "done"){
-      item.swimLane = "toDo"
-    }
-    console.log(item)
+    setSaveItem([...saveItem, item])
   }
- 
+
+   function handleLeftClick(item){
+    if(item.swimLane > 0){
+      item.swimLane = item.swimLane - 1
+    } else{
+      item.swimLane = 2
+    }
+    setSaveItem([...saveItem, item])
+  }
+
+
   return (
     <Container>
       <Column>
@@ -80,6 +88,7 @@ function App() {
         <input 
           type="text" id="title" name="title" 
           onChange={(e) => setDetails({...details, title: e.target.value})}
+          placeholder="Input title"
         />
         <br></br>
         <label for="description">Description:</label>
@@ -87,6 +96,7 @@ function App() {
         <input 
           type="text" id="description" name="description" 
           onChange={(e) => setDetails({...details, description: e.target.value})}
+          placeholder="Input description"
         />
         <br></br>
         <input type="submit" value="Submit" onClick={(e) => newTask(e)}/>
@@ -94,23 +104,22 @@ function App() {
       </Column>
       <Column>
         <h2>Todo</h2>
-
         {task.map((x) => 
-         x.swimLane === "toDo" ? showTask(x) : ''
+         x.swimLane === 0 ? showTask(x) : ''
         )}
       </Column>
       <Column>
         <h2>In Progress</h2>
         <p>Put items here</p>
         {task.map((x) => 
-         x.swimLane === "inProgress" ? showTask(x) : ''
+         x.swimLane === 1 ? showTask(x) : ''
          )}
       </Column>
       <Column>
       <h2>Done</h2>
         <p>Put items here</p>
         {task.map((x) => 
-         x.swimLane === "done" ? showTask(x) : ''
+         x.swimLane === 2 ? showTask(x) : ''
          )}
       </Column>
     </Container>
