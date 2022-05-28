@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import uuid from 'react-uuid';
+import './App.css';
 
 const Container = styled.div`
   display: flex;
@@ -12,11 +13,15 @@ const Column = styled.div`
   width: 300px;
   margin: 20px;
   justify-content: center;
+  text-align: center
+  
 `
 
 const Card = styled.div`
   width: 200px;
-  outline: 5px solid purple;
+  height: 200px;
+  margin-top: 50px;
+
 `
 
 function App() {
@@ -83,6 +88,7 @@ function App() {
       <Column>
       <h1>KANBAN BOARD</h1>
         <form >
+        <div className="inner-form">
         <label for="titlen">Title:</label>
         <br></br>
         <input 
@@ -100,27 +106,37 @@ function App() {
         />
         <br></br>
         <input type="submit" value="Submit" onClick={(e) => newTask(e)}/>
+        </div>
         </form>
       </Column>
       <Column>
-        <h2>Todo</h2>
+        <h2>To-Do</h2>
+        <p>Put items here</p>
         {task.map((x) => 
-         x.swimLane === 0 ? showTask(x) : ''
+         <div className="todo">
+        {x.swimLane === 0 ? showTask(x) : ''}
+        </div>
         )}
       </Column>
       <Column>
         <h2>In Progress</h2>
         <p>Put items here</p>
+
         {task.map((x) => 
-         x.swimLane === 1 ? showTask(x) : ''
-         )}
+         <div className="in-progress">
+        {x.swimLane === 1 ? showTask(x) : ''}
+        </div>
+        )}
       </Column>
       <Column>
       <h2>Done</h2>
         <p>Put items here</p>
+        
         {task.map((x) => 
-         x.swimLane === 2 ? showTask(x) : ''
-         )}
+         <div className="done">
+        {x.swimLane === 2 ? showTask(x) : ''}
+        </div>
+        )}
       </Column>
     </Container>
   );

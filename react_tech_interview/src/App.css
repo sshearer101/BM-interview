@@ -36,3 +36,90 @@
     transform: rotate(360deg);
   }
 }
+
+
+form{
+  display: block;
+  position: relative;
+}
+
+
+form .inner-form{
+  position: relative;
+  display: block;
+  background-color: white;
+  margin-left: auto;
+  padding-right: 20px;
+}
+
+form .inner-form label{
+  color: #888;
+  font-size: 28px;
+  font-weight: 28px;
+  margin-bottom: 30px;
+ }
+ 
+ .inner-form:focus-within label{
+  color: #FE4880
+}
+
+form .inner-form input{
+  display: block;
+  width: 80%;
+  padding: 10px 15px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  transition: .4s;
+}
+
+form .inner-form input:focus{
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2)
+}
+
+form .inner-form input[type="submit"]{
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-image: linear-gradient(to right, #FFCE00 50%, #FFCE00 50%, #FE4880);
+  background-size: 200%;
+  background-position: 0%;
+  transition: .4s;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+form .inner-form input[type="submit"]:hover{
+  background-position: 100% 0%;
+}
+
+ button {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-image: linear-gradient(to right, #FFCE00 50%, #FFCE00 50%, #FE4880);
+  background-size: 200%;
+  background-position: 0%;
+  transition: .4s;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button:hover{
+  background-position: 100% 0%;
+}
+
+
+.todo{
+  outline: 5px solid red
+}
+
+.in-progress{
+  outline: 5px solid yellow
+}
+
+.done{
+  outline: 5px solid green
+}
